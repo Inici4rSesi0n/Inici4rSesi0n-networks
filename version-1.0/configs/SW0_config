@@ -1,0 +1,39 @@
+Switch>enable
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname SW0
+
+SW0(config)#ip domain-name redes.local
+SW0(config)#Username inici4rsesi0n password SW0
+SW0(config)#vlan 1
+SW0(config-vlan)#exit
+SW0(config)#interface vlan 1
+SW0(config-if)#ip address 192.168.20.100 255.255.255.0
+SW0(config-if)#no shutdown
+SW0(config-if)#exit
+SW0(config)#crypto key generate rsa general-keys modulus 103
+
+SW0(config-if)#
+%LINK-3-UPDOWN: Interface Vlan1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to up
+
+SW0(config)#ip ssh version 2
+Please create RSA keys (of at least 768 bits size) to enable SSH v2.
+SW0(config)#line vty 0 4
+SW0(config-line)#password SW0
+SW0(config-line)#login
+SW0(config-line)#login local
+SW0(config-line)#transport input all
+SW0(config-line)#exit
+SW0(config)#enable secret SW0
+SW0(config)#end
+
+%SYS-5-CONFIG_I: Configured from console by console
+
+SW0#copy running-config start
+SW0#copy running-config startup-config 
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SW0#

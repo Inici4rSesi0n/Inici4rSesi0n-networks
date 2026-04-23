@@ -1,0 +1,14 @@
+Switch>enable
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname SW2
+SW2(config)#enable secret SW2
+SW2(config)#end
+
+%SYS-5-CONFIG_I: Configured from console by console
+
+SW2#copy running-config startup-config 
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SW2#
