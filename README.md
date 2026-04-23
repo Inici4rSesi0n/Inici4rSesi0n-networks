@@ -54,6 +54,22 @@ Este proyecto implementa una **red de área local (LAN)** funcional utilizando *
 - **Access Point0**: Conexión inalámbrica para Laptop1.
 - **Server0**: Servidor web (HTTP) para pruebas de encapsulamiento.
 
+**Módulos de red utilizados:**
+- **Switch1**: 2 módulos `1FGE` (fibra) + 2 módulos `1CGE` (cobre Gigabit).
+- **Switch2**: 1 módulo `1FGE` + 1 módulo `1CGE`.
+- **Server0**: 1 módulo `1FGE` (fibra).
+- **Laptop1**: 1 `WPC300N` (Wi‑Fi).
+
+| Dispositivo origen | Interfaz | Velocidad | Medio | Dispositivo destino | Interfaz |
+|--------------------|----------|-----------|-------|----------------------|-----------|
+| PC0                | Fa0      | 100 Mbps  | UTP directo | Switch0 | Fa0/1 |
+| Laptop0            | Fa0      | 100 Mbps  | UTP directo | Switch0 | Fa0/2 |
+| Switch0            | Gig0/1   | 1000 Mbps | UTP cruzado | Switch1 | Gig0/1 |
+| Switch1            | Gig1/0   | 1000 Mbps | Fibra multimodo | Server0 | Gig0 |
+| Switch1            | Gig2/0   | 1000 Mbps | Fibra multimodo | Switch2 | Gig1/0 |
+| Switch1            | Gig0/2   | 1000 Mbps | UTP directo | Access Point0 | Port0 |
+| Access Point0      | Wireless | 54-300 Mbps | Wi‑Fi | Laptop1 | Wireless0 |
+| Switch2            | Fa0/1    | 100 Mbps  | UTP directo | Printer0 | Fa0 |
 ---
 
 ## 🔧 Configuraciones clave
