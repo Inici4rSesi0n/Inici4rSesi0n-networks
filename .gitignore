@@ -1,1 +1,7 @@
+# Archivos temporales de Packet Tracer
+*.pkt.bak
+*.pkt.sav
 
+# Archivos de sistema
+.DS_Store
+Thumbs.db
